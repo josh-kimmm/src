@@ -1,0 +1,91 @@
+package csm10jlab07;
+import static java.lang.Double.NaN;
+
+
+
+public class Line {
+    
+    private double a, b, c;
+    
+    public Line(double a, double b, double c)
+    {
+        this.a = a;
+        this.b = b;
+        this.c = c;
+    }
+    
+    public Line()
+    {
+        this.a = 0;
+        this.b = 0;
+        this.c = 0;
+    }
+    
+    public void setA(double a)
+    {
+        this.a = a;
+    }
+    
+    public void setB(double b)
+    {
+        this.b = b;
+    }
+    
+    public void setC(double c)
+    {
+        this.c = c;
+    }
+    
+    public double getA()
+    {
+        return a;
+    }
+    
+    public double getB()
+    {
+        return b;
+    }
+    
+    public double getC()
+    {
+        return c;
+    }
+    
+    public double getSlope()
+    {
+        if(b == 0)
+            return NaN;
+        else 
+            return (-a / b);
+    }
+    
+    public boolean equals(Line line)
+    {
+        if(line.a == a && line.b == b && line.c == c)
+            return true;
+        else 
+            return (getSlope() == line.getSlope()) && 
+                    ((c / line.c == a / line.a) && (c / line.c == b / line.b));
+    }
+    
+    public boolean parallelTo(Line line)
+    {
+        return line.getSlope() == getSlope();
+    }
+    
+    public boolean perpendicularTo(Line line)
+    {
+        return line.getSlope() == (b / a);
+    }
+    
+    public boolean isVertical()
+    {
+        return b == 0;
+    }
+    
+    public boolean isHorizontal()
+    {
+        return a == 0;
+    }
+    
+}
